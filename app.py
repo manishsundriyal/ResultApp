@@ -4,6 +4,10 @@ import csv
 
 app = Flask(__name__)
 
+@app.route('/')
+def index():
+	return 'Welcome to GGSIPU result API'
+
 @app.route('/getResult', methods = ['POST'])
 def getResult():
 	key = request.form['api-key']
