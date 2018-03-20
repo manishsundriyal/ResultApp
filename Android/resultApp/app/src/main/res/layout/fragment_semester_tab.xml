@@ -14,18 +14,8 @@
         <Spinner
             android:id="@+id/semesterSpinner"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:theme="@style/ThemeOverlay.AppCompat.Light"/>
-
-        <TextView
-            android:id="@+id/semesterTabText"
-            android:layout_width="match_parent"
-            android:hint="Semester Number"
-            android:gravity="center"
-            android:padding="15dp"
-            android:textColor="@android:color/black"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"/>
+            android:padding="8dp"
+            android:layout_height="wrap_content"/>
 
     </LinearLayout>
 

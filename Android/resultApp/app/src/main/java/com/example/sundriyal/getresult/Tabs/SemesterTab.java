@@ -13,6 +13,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.sundriyal.getresult.R;
 
@@ -25,8 +26,7 @@ import java.util.List;
 public class SemesterTab extends Fragment {
 
     private Spinner semesterSpinner;
-    private List<String> semsters;
-    private TextView centerText;
+    private List<String> semesters;
     public SemesterTab() {
         // Required empty public constructor
     }
@@ -37,26 +37,37 @@ public class SemesterTab extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_semester_tab, container, false);
-        semsters = new ArrayList<String>();
+        semesters = new ArrayList<String>();
 
         semesterSpinner = (Spinner) view.findViewById(R.id.semesterSpinner);
-        semesterSpinner.setBackgroundColor(Color.GRAY);
 
-        centerText = (TextView) view.findViewById(R.id.semesterTabText);
+        semesters.add("Select Semester");
+        semesters.add("Semester 1");
+        semesters.add("Semester 2");
+        semesters.add("Semester 3");
+        semesters.add("Semester 4");
+        semesters.add("Semester 5");
+        semesters.add("Semester 6");
 
-
-        semsters.add("Select Semester");
-        semsters.add("Semester 1");
-        semsters.add("Semester 2");
-        semsters.add("Semester 3");
-        semsters.add("Semester 4");
-        semsters.add("Semester 5");
-        semsters.add("Semester 6");
-
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(view.getContext(),android.R.layout.simple_spinner_item,semsters);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(view.getContext(),android.R.layout.simple_spinner_dropdown_item,semesters);
 
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         semesterSpinner.setAdapter(adapter);
+
+
+        semesterSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                if(i!=0){
+                    Toast.makeText(getActivity(), "Semester "+i, Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
 
         return view;
     }
